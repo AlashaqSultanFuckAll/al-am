@@ -28,7 +28,6 @@ client.on('message', function(message) {
         message.channel.send(':white_check_mark: Done!').then(msg => {
            msg.delete(5000);
           message.delete(5000);
-        });
     }
 });
 
