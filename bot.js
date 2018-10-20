@@ -2,17 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '!'
 
-client.on('ready', () => {
-  console.log('======================================')
-  console.log(`Logged in as ${client.user.tag}!`);
-  console.log('')
-  console.log(`servers! [ " ${client.guilds.size} " ]`);
-  console.log('')
-  console.log(`Users! [ " ${client.users.size} " ]`);
-  console.log('=======================================')
-});
-
-
 client.on('message', function(message) {
 	const myID = "321779633252990976";
     let args = message.content.split(" ").slice(1).join(" ");
