@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "-";
 
 client.on('ready', () => {
-     client.user.setActivity("OverHype Codes 4KK Soon",{type: 'Waiting'})
+     client.user.setActivity("OverHype Codes 4KK Soon",{type: 'Playing'})
 
 });
 
@@ -103,7 +103,30 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You
 
 });
 
+const invites = {};
 
+const wait = require('util').promisify(setTimeout);
+
+client.on('ready', () => {
+  wait(1000);
+
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    invites[member.guild.id] = guildInvites;
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const logChannel = member.guild.channels.find(channel => channel.name === "chat");
+    logChannel.send(`${member} Invited by: <@${inviter.id}>`);
+  });
+});
 
 client.on('message', message => {
 if(message.content.startsWith(prefix + 'move all')) {
