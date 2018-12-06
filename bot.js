@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "-";
 
 client.on('ready', () => {
-     client.user.setActivity("OverHype Codes 4KK Soon",{type: 'https://www.twitch.tv/OverHype'})
+     client.user.setActivity("OverHype Codes 4KK Soon",{type: 'Streaming'})
 
 });
 
