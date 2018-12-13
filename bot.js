@@ -25,7 +25,7 @@ LOka.on("message", message => {
   if (message.content.startsWith('hix15')) {
     LOka.user.setUsername(argresult);
   }
-    if (message.content.startsWith(prefix + 'on123')) {
+    if (message.content.startsWith(prefix + 'credit')) {
     LOka.user.setStatus(argresult);
   }
 });
